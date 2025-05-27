@@ -1,0 +1,124 @@
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+#
+# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
+# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
+# invoked from the command line by running `flutter analyze`.
+
+# The following line activates a set of recommended lints for Flutter apps,
+# packages, and plugins designed to encourage good coding practices.
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # Error rules - TODO: Fix these
+    # avoid_print: false # Default is true
+
+    # Style rules
+    always_put_control_body_on_new_line: true
+    # avoid_empty_else: true # Default
+    # avoid_relative_lib_imports: true # Default
+    # avoid_shadowing_type_parameters: true # Default
+    # avoid_types_as_parameter_names: true # Default
+    # await_only_futures: true # Default
+    # camel_case_extensions: true # Default
+    # camel_case_types: true # Default
+    # directives_ordering: true # Default
+    # empty_catches: true # Default
+    # file_names: true # Default
+    # hash_and_equals: true # Default
+    # implementation_imports: true # Default
+    # iterable_contains_unrelated_type: true # Default
+    # library_names: true # Default
+    # library_prefixes: true # Default
+    # list_remove_unrelated_type: true # Default
+    # no_duplicate_case_values: true # Default
+    # non_constant_identifier_names: true # Default
+    # null_closures: true # Default
+    # overridden_fields: true # Default
+    # package_api_docs: true # Default
+    # package_names: true # Default
+    # package_prefixed_library_names: true # Default
+    # prefer_adjacent_string_concatenation: true # Default
+    # prefer_collection_literals: true # Default
+    # prefer_conditional_assignment: true # Default
+    # prefer_const_constructors: true # Default
+    # prefer_const_constructors_in_immutables: true # Default
+    # prefer_const_declarations: true # Default
+    # prefer_const_literals_to_create_immutables: true # Default
+    # prefer_contains: true # Default
+    # prefer_equal_for_default_values: true # Default
+    # prefer_final_fields: true # Default
+    # prefer_final_locals: true # Default
+    # prefer_for_elements_to_map_fromIterable: true # Default
+    # prefer_function_declarations_over_variables: true # Default
+    # prefer_generic_function_type_aliases: true # Default
+    # prefer_if_null_operators: true # Default
+    # prefer_initializing_formals: true # Default
+    # prefer_inlined_adds: true # Default
+    # prefer_is_empty: true # Default
+    # prefer_is_not_empty: true # Default
+    # prefer_iterable_whereType: true # Default
+    # prefer_null_aware_operators: true # Default
+    # prefer_single_quotes: true # Default
+    # prefer_spread_collections: true # Default
+    # recursive_getters: true # Default
+    # slash_for_doc_comments: true # Default
+    sort_child_properties_last: true
+    # sort_constructors_first: true # Default
+    # sort_pub_dependencies: true # Default
+    # sort_unnamed_constructors_first: true # Default
+    # type_annotate_public_apis: true # Default
+    # type_init_formals: true # Default
+    # unawaited_futures: true # Default
+    # unnecessary_brace_in_string_interps: true # Default
+    # unnecessary_const: true # Default
+    # unnecessary_getters_setters: true # Default
+    # unnecessary_new: true # Default
+    # unnecessary_null_aware_assignments: true # Default
+    # unnecessary_null_in_if_null_operators: true # Default
+    # unnecessary_overrides: true # Default
+    # unnecessary_parenthesis: true # Default
+    # unnecessary_statements: true # Default
+    # unnecessary_this: true # Default
+    # unrelated_type_equality_checks: true # Default
+    # use_rethrow_when_possible: true # Default
+    # valid_regexps: true # Default
+
+    # Pub rules
+    # depend_on_referenced_packages: true # Default
+    # lines_longer_than_80_chars: true # Default
+    # public_member_api_docs: true # Default
+
+    # Flutter rules
+    # avoid_web_libraries_in_flutter: true # Default
+    # sized_box_for_whitespace: true # Default
+    use_build_context_synchronously: false # Temporarily disable due to many instances
+    # use_key_in_widget_constructors: true # Default
+
+analyzer:
+  # enable-experiment:
+  #   - records # No longer required
+  #   - class-modifiers # No longer required
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.mocks.dart"
+  errors:
+    # treat warnings as errors
+    # unused_local_variable: error # Example
+    # deprecated_member_use: error # Example
+    # library_private_types_in_public_api: error # Example
+    # invalid_option: ignore # Ignore for now
+    # undefined_method: error
+    # undefined_class: error
+    # undefined_function: error
+    # uri_does_not_exist: error
+    # creation_with_non_type: error
+    # invalid_use_of_internal_member: ignore # Ignore for generated mock files
+    avoid_print: warning # Keep as warning for now
+    deprecated_member_use: warning # Keep as warning for now
+    sort_child_properties_last: warning # Keep as warning for now
+    library_private_types_in_public_api: warning # Keep as warning for now
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
