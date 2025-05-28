@@ -40,7 +40,7 @@ class ReviewCardUseCase extends UseCase<Card, ReviewCardParams> {
   Future<Either<Failure, Card>> call(ReviewCardParams params) async {
     // Validation
     if (params.cardId <= 0) {
-      return Left(ValidationFailure('L\'ID de la carte doit être valide'));
+      return const Left(ValidationFailure('L\'ID de la carte doit être valide'));
     }
 
     // Récupérer la carte actuelle
@@ -124,7 +124,7 @@ class GetDeckStatsUseCase extends UseCase<DeckStats, int> {
   @override
   Future<Either<Failure, DeckStats>> call(int deckId) async {
     if (deckId <= 0) {
-      return Left(ValidationFailure('L\'ID du deck doit être valide'));
+      return const Left(ValidationFailure('L\'ID du deck doit être valide'));
     }
 
     // Récupérer toutes les cartes du deck
@@ -137,13 +137,13 @@ class GetDeckStatsUseCase extends UseCase<DeckStats, int> {
           final now = DateTime.now();
           final today = DateTime(now.year, now.month, now.day);
           
-          int totalCards = cards.length;
-          int newCards = cards.where((card) => card.repetitions == 0).length;
-          int dueCards = cards.where((card) => 
+          final int totalCards = cards.length;
+          final int newCards = cards.where((card) => card.repetitions == 0).length;
+          final int dueCards = cards.where((card) => 
             card.nextReviewDate != null && 
             (card.nextReviewDate!.isBefore(now) || card.nextReviewDate!.isAtSameMomentAs(now))
           ).length;
-          int reviewedToday = cards.where((card) => 
+          final int reviewedToday = cards.where((card) => 
             card.lastReviewed != null && 
             card.lastReviewed!.isAfter(today)
           ).length;
@@ -248,7 +248,7 @@ class ResetCardProgressUseCase extends UseCase<Card, int> {
   @override
   Future<Either<Failure, Card>> call(int cardId) async {
     if (cardId <= 0) {
-      return Left(ValidationFailure('L\'ID de la carte doit être valide'));
+      return const Left(ValidationFailure('L\'ID de la carte doit être valide'));
     }
 
     final cardResult = await repository.getCard(cardId);
@@ -260,7 +260,6 @@ class ResetCardProgressUseCase extends UseCase<Card, int> {
           intervalDays: 1,
           repetitions: 0,
           reviewCount: 0,
-          lastReviewed: null,
           nextReviewDate: DateTime.now(),
           updatedAt: DateTime.now(),
         );

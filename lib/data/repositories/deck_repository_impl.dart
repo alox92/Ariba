@@ -60,7 +60,7 @@ class DeckRepositoryImpl implements DeckRepository {
         final updatedDeckData = await _decksDao.getDeckById(deck.id);
         return Right(updatedDeckData.toDomain());
       } else {
-        return Left(DatabaseFailure('Échec de la mise à jour du deck'));
+        return const Left(DatabaseFailure('Échec de la mise à jour du deck'));
       }
     } catch (e) {
       return Left(DatabaseFailure('Erreur lors de la mise à jour du deck: ${e.toString()}'));

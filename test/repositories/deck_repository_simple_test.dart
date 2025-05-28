@@ -25,7 +25,7 @@ void main() {
           name: 'Test Deck 1',
           description: 'Description 1',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           lastAccessed: DateTime(2023, 1, 3),
         ),
         DeckEntityData(
@@ -33,7 +33,7 @@ void main() {
           name: 'Test Deck 2',
           description: 'Description 2',
           cardCount: 3,
-          createdAt: DateTime(2023, 2, 1),
+          createdAt: DateTime(2023, 2),
           lastAccessed: DateTime(2023, 2, 3),
         ),
       ];

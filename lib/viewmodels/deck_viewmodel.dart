@@ -57,12 +57,12 @@ class DeckViewModel extends ChangeNotifier {
     try {
       final result = await _getDecksUseCase().first;
       result.fold(
-        (failure) => _error = "Erreur chargement paquets: ${failure.message}",
+        (failure) => _error = 'Erreur chargement paquets: ${failure.message}',
         (decksList) => _decks = decksList,
       );
     } catch (e) {
-      _error = "Erreur chargement paquets: ${e.toString()}";
-      debugPrint("Error loading decks: $e");
+      _error = 'Erreur chargement paquets: ${e.toString()}';
+      debugPrint('Error loading decks: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -75,8 +75,8 @@ class DeckViewModel extends ChangeNotifier {
       (result) {
         result.fold(
           (failure) {
-            _error = "Erreur observation paquets: ${failure.message}";
-            debugPrint("Error watching decks: ${failure.message}");
+            _error = 'Erreur observation paquets: ${failure.message}';
+            debugPrint('Error watching decks: ${failure.message}');
           },
           (updatedDecks) {
             _decks = updatedDecks;
@@ -86,8 +86,8 @@ class DeckViewModel extends ChangeNotifier {
         notifyListeners();
       },
       onError: (e) {
-        _error = "Erreur observation paquets: ${e.toString()}";
-        debugPrint("Error watching decks: $e");
+        _error = 'Erreur observation paquets: ${e.toString()}';
+        debugPrint('Error watching decks: $e');
         notifyListeners();
       },
     );
@@ -108,12 +108,12 @@ class DeckViewModel extends ChangeNotifier {
       );
       final result = await _addDeckUseCase(params);
       result.fold(
-        (failure) => _error = "Erreur ajout paquet: ${failure.message}",
-        (deck) => debugPrint("Deck added successfully: ${deck.name}"),
+        (failure) => _error = 'Erreur ajout paquet: ${failure.message}',
+        (deck) => debugPrint('Deck added successfully: ${deck.name}'),
       );
     } catch (e) {
-      _error = "Erreur ajout paquet: ${e.toString()}";
-      debugPrint("Error adding deck: $e");
+      _error = 'Erreur ajout paquet: ${e.toString()}';
+      debugPrint('Error adding deck: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -133,7 +133,7 @@ class DeckViewModel extends ChangeNotifier {
       final getDeckResult = await _getDeckByIdUseCase(id);
       await getDeckResult.fold(
         (failure) async {
-          _error = "Erreur récupération paquet: ${failure.message}";
+          _error = 'Erreur récupération paquet: ${failure.message}';
         },
         (existingDeck) async {
           // Créer le deck mis à jour
@@ -144,14 +144,14 @@ class DeckViewModel extends ChangeNotifier {
           
           final result = await _updateDeckUseCase(updatedDeck);
           result.fold(
-            (failure) => _error = "Erreur màj paquet: ${failure.message}",
-            (deck) => debugPrint("Deck updated successfully: ${deck.name}"),
+            (failure) => _error = 'Erreur màj paquet: ${failure.message}',
+            (deck) => debugPrint('Deck updated successfully: ${deck.name}'),
           );
         },
       );
     } catch (e) {
-      _error = "Erreur màj paquet: ${e.toString()}";
-      debugPrint("Error updating deck: $e");
+      _error = 'Erreur màj paquet: ${e.toString()}';
+      debugPrint('Error updating deck: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -169,12 +169,12 @@ class DeckViewModel extends ChangeNotifier {
     try {
       final result = await _deleteDeckUseCase(deckId);
       result.fold(
-        (failure) => _error = "Erreur suppression paquet: ${failure.message}",
-        (unit) => debugPrint("Deck deleted successfully"),
+        (failure) => _error = 'Erreur suppression paquet: ${failure.message}',
+        (unit) => debugPrint('Deck deleted successfully'),
       );
     } catch (e) {
-      _error = "Erreur suppression paquet: ${e.toString()}";
-      debugPrint("Error deleting deck: $e");
+      _error = 'Erreur suppression paquet: ${e.toString()}';
+      debugPrint('Error deleting deck: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -206,8 +206,8 @@ class DeckViewModel extends ChangeNotifier {
         return null;
       }
     } catch (e) {
-      _error = "Erreur exportation: ${e.toString()}";
-      debugPrint("Error exporting deck: $e");
+      _error = 'Erreur exportation: ${e.toString()}';
+      debugPrint('Error exporting deck: $e');
       return null;
     } finally {
       _isExporting = false;
@@ -225,9 +225,8 @@ class DeckViewModel extends ChangeNotifier {
 
     try {
       // Utiliser FilePicker pour obtenir le chemin du fichier
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType
-            .any, // Ou spécifier les types : custom, allowedExtensions: ['csv', 'apkg', 'md', 'txt']
+      final FilePickerResult? result = await FilePicker.platform.pickFiles(
+        
       );
 
       if (result != null && result.files.single.path != null) {
@@ -242,17 +241,17 @@ class DeckViewModel extends ChangeNotifier {
           return importResult.deckId;
         } else {
           _error = importResult.message;
-          debugPrint("Import error: \${importResult.message}");
+          debugPrint('Import error: \${importResult.message}');
           return null;
         }
       } else {
         // L'utilisateur a annulé la sélection ou aucun fichier n'a été sélectionné
-        _error = "Importation annulée ou aucun fichier sélectionné.";
+        _error = 'Importation annulée ou aucun fichier sélectionné.';
         return null;
       }
     } catch (e) {
-      _error = "Erreur importation: \${e.toString()}";
-      debugPrint("Error importing deck: \$e");
+      _error = 'Erreur importation: \${e.toString()}';
+      debugPrint('Error importing deck: \$e');
       return null;
     } finally {
       _isImporting = false;

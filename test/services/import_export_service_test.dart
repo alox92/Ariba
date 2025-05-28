@@ -178,7 +178,7 @@ void main() {
       expect(csvContent.contains('Front 2'), isTrue);
       expect(csvContent.contains('Back 2'), isTrue);
 
-      final listConverter = const CsvToListConverter();
+      const listConverter = CsvToListConverter();
       final rows = listConverter.convert(csvContent);
       // Expect 3 rows: 1 header + 2 data rows
       expect(rows.length, 3);

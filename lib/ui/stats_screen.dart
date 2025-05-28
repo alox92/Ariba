@@ -241,7 +241,7 @@ class _StatsScreenState extends State<StatsScreen> {
                           Theme.of(context).colorScheme.primary.withAlpha(
                               204), // Replaced tooltipBgColor with getTooltipColor
                       getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                        String label = sortedEntries[groupIndex].key;
+                        final String label = sortedEntries[groupIndex].key;
                         return BarTooltipItem(
                           '$label\n${rod.toY.round()}',
                           const TextStyle(
@@ -251,7 +251,6 @@ class _StatsScreenState extends State<StatsScreen> {
                     ),
                   ),
                   titlesData: FlTitlesData(
-                    show: true,
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
@@ -288,9 +287,9 @@ class _StatsScreenState extends State<StatsScreen> {
                       ),
                     ),
                     topTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false)),
+                        ),
                     rightTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false)),
+                        ),
                   ),
                   borderData: FlBorderData(show: false),
                   barGroups: List.generate(sortedEntries.length, (index) {
@@ -321,8 +320,8 @@ class _StatsScreenState extends State<StatsScreen> {
       return const SizedBox.shrink();
     }
 
-    List<FlSpot> spots = [];
-    Map<int, String> bottomTitles = {};
+    final List<FlSpot> spots = [];
+    final Map<int, String> bottomTitles = {};
 
     // Data is already sorted by date from DAO
     // aggregatedStats.sort((a, b) => a.date.compareTo(b.date)); // No longer needed if DAO sorts
@@ -341,7 +340,7 @@ class _StatsScreenState extends State<StatsScreen> {
       }
     }
 
-    double minY = 0;
+    const double minY = 0;
     // Calculate maxY based on review counts
     double maxY =
         aggregatedStats.map((s) => s.reviewCount).reduce(max).toDouble() + 2;
@@ -366,9 +365,7 @@ class _StatsScreenState extends State<StatsScreen> {
                 LineChartData(
                   minY: minY,
                   maxY: maxY,
-                  gridData: const FlGridData(show: true),
                   titlesData: FlTitlesData(
-                    show: true,
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
@@ -411,9 +408,9 @@ class _StatsScreenState extends State<StatsScreen> {
                       ),
                     ),
                     topTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false)),
+                        ),
                     rightTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false)),
+                        ),
                   ),
                   borderData: FlBorderData(
                       show: true,
@@ -476,7 +473,7 @@ class _StatsScreenState extends State<StatsScreen> {
           fontSize: fontSize,
           fontWeight: FontWeight.bold,
           color: Color(0xffffffff),
-          shadows: [Shadow(color: Colors.black, blurRadius: 2)],
+          shadows: [Shadow(blurRadius: 2)],
         ),
       );
     }).toList();

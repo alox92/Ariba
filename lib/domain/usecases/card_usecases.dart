@@ -14,10 +14,10 @@ class AddCardUseCase extends UseCase<Card, AddCardParams> {
   Future<Either<Failure, Card>> call(AddCardParams params) async {
     // Validation
     if (params.frontText.trim().isEmpty) {
-      return Left(ValidationFailure('Le recto de la carte ne peut pas être vide'));
+      return const Left(ValidationFailure('Le recto de la carte ne peut pas être vide'));
     }
     if (params.backText.trim().isEmpty) {
-      return Left(ValidationFailure('Le verso de la carte ne peut pas être vide'));
+      return const Left(ValidationFailure('Le verso de la carte ne peut pas être vide'));
     }
 
     final card = Card(
@@ -30,12 +30,7 @@ class AddCardUseCase extends UseCase<Card, AddCardParams> {
       frontAudioPath: params.frontAudioPath,
       backAudioPath: params.backAudioPath,
       tags: params.tags,
-      difficulty: 0,
-      easinessFactor: 2.5, // Valeur par défaut pour l'algorithme SM-2
       intervalDays: 1,
-      repetitions: 0,
-      reviewCount: 0,
-      lastReviewed: null,
       nextReviewDate: DateTime.now(),
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
@@ -77,10 +72,10 @@ class UpdateCardUseCase extends UseCase<Card, UpdateCardParams> {
   Future<Either<Failure, Card>> call(UpdateCardParams params) async {
     // Validation
     if (params.frontText.trim().isEmpty) {
-      return Left(ValidationFailure('Le recto de la carte ne peut pas être vide'));
+      return const Left(ValidationFailure('Le recto de la carte ne peut pas être vide'));
     }
     if (params.backText.trim().isEmpty) {
-      return Left(ValidationFailure('Le verso de la carte ne peut pas être vide'));
+      return const Left(ValidationFailure('Le verso de la carte ne peut pas être vide'));
     }
 
     final updatedCard = params.card.copyWith(
@@ -129,7 +124,7 @@ class DeleteCardUseCase extends UseCase<Unit, int> {
   @override
   Future<Either<Failure, Unit>> call(int cardId) async {
     if (cardId <= 0) {
-      return Left(ValidationFailure('L\'ID de la carte doit être valide'));
+      return const Left(ValidationFailure('L\'ID de la carte doit être valide'));
     }
 
     return await repository.deleteCard(cardId);
@@ -145,7 +140,7 @@ class GetCardsByDeckUseCase extends StreamUseCase<List<Card>, int> {
   @override
   Stream<Either<Failure, List<Card>>> call(int deckId) {
     if (deckId <= 0) {
-      return Stream.value(Left(ValidationFailure('L\'ID du deck doit être valide')));
+      return Stream.value(const Left(ValidationFailure('L\'ID du deck doit être valide')));
     }
 
     return repository.watchCardsByDeck(deckId);
@@ -161,7 +156,7 @@ class GetCardsDueForReviewUseCase extends StreamUseCase<List<Card>, int> {
   @override
   Stream<Either<Failure, List<Card>>> call(int deckId) {
     if (deckId <= 0) {
-      return Stream.value(Left(ValidationFailure('L\'ID du deck doit être valide')));
+      return Stream.value(const Left(ValidationFailure('L\'ID du deck doit être valide')));
     }
 
     return repository.watchCardsDueForReview(deckId);
@@ -177,7 +172,7 @@ class GetCardUseCase extends UseCase<Card, int> {
   @override
   Future<Either<Failure, Card>> call(int cardId) async {
     if (cardId <= 0) {
-      return Left(ValidationFailure('L\'ID de la carte doit être valide'));
+      return const Left(ValidationFailure('L\'ID de la carte doit être valide'));
     }
 
     return await repository.getCard(cardId);

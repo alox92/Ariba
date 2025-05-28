@@ -77,7 +77,7 @@ class CardRepositoryImpl implements CardRepository {
       // Récupérer la carte créée avec l'ID généré
       final createdCardData = await _cardsDao.getCardById(cardId);
       if (createdCardData == null) {
-        return Left(DatabaseFailure('Erreur lors de la récupération de la carte créée'));
+        return const Left(DatabaseFailure('Erreur lors de la récupération de la carte créée'));
       }
       return Right(createdCardData.toDomain());
     } catch (e) {
@@ -94,11 +94,11 @@ class CardRepositoryImpl implements CardRepository {
       if (success) {
         final updatedCardData = await _cardsDao.getCardById(card.id);
         if (updatedCardData == null) {
-          return Left(DatabaseFailure('Erreur lors de la récupération de la carte mise à jour'));
+          return const Left(DatabaseFailure('Erreur lors de la récupération de la carte mise à jour'));
         }
         return Right(updatedCardData.toDomain());
       } else {
-        return Left(DatabaseFailure('Échec de la mise à jour de la carte'));
+        return const Left(DatabaseFailure('Échec de la mise à jour de la carte'));
       }
     } catch (e) {
       return Left(DatabaseFailure('Erreur lors de la mise à jour de la carte: ${e.toString()}'));

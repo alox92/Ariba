@@ -57,11 +57,11 @@ class AppRouter {
         path: '/',
         name: 'dashboard',
         builder: (BuildContext context, GoRouterState state) =>
-            MainLayout(child: const DashboardScreen()),        routes: [
+            const MainLayout(child: DashboardScreen()),        routes: [
           GoRoute(
             path: 'decks',
             name: 'home',
-            builder: (context, state) => MainLayout(child: const HomeScreen()),
+            builder: (context, state) => const MainLayout(child: HomeScreen()),
             routes: <RouteBase>[
               GoRoute(
                 name: 'deckDetail',
@@ -83,7 +83,7 @@ class AppRouter {
                         return _navError(state.uri);
                       }
                       return MainLayout(
-                          child: EditCardScreen(deck: deck, card: null));
+                          child: EditCardScreen(deck: deck));
                     },
                   ),
                   GoRoute(
@@ -213,7 +213,7 @@ class AppRouter {
           ),          GoRoute(
             name: 'statsGlobal',
             path: 'stats',
-            builder: (context, state) => MainLayout(child: const StatisticsScreen()),
+            builder: (context, state) => const MainLayout(child: StatisticsScreen()),
             routes: [
               GoRoute(
                   name: 'statsDeck',
@@ -234,7 +234,7 @@ class AppRouter {
             name: 'notifications',
             path: 'notifications',
             builder: (context, state) =>
-                MainLayout(child: const NotificationsScreen()),
+                const MainLayout(child: NotificationsScreen()),
           ),
           GoRoute(
             name: 'settings',
@@ -250,20 +250,20 @@ class AppRouter {
                   name: 'themeSettings',
                   path: 'theme',
                   builder: (ctx, state) =>
-                      MainLayout(child: const ThemeSettingsScreen())),              GoRoute(
+                      const MainLayout(child: ThemeSettingsScreen())),              GoRoute(
                   name: 'performanceSettings',
                   path: 'performance',
                   builder: (ctx, state) =>
-                      MainLayout(child: const PerformanceSettingsScreen())),              GoRoute(
+                      const MainLayout(child: PerformanceSettingsScreen())),              GoRoute(
                   name: 'advancedPerformance',
                   path: 'advanced-performance',
                   builder: (ctx, state) =>
-                      MainLayout(child: const AdvancedPerformanceScreen())),
+                      const MainLayout(child: AdvancedPerformanceScreen())),
               GoRoute(
                   name: 'studyModeSettings',
                   path: 'study-modes',
                   builder: (ctx, state) =>
-                      MainLayout(child: const StudyModeSettingsScreen())),
+                      const MainLayout(child: StudyModeSettingsScreen())),
             ],
           ),
         ],

@@ -83,13 +83,13 @@ void main() {
       ));
       
       // For large collection, should return batch
-      final batchedCards = await performanceService.loadCardsBatched(cards, 0, batchSize: 50);
+      final batchedCards = await performanceService.loadCardsBatched(cards, 0);
       expect(batchedCards.length, 50);
       expect(batchedCards.first.id, 0);
       expect(batchedCards.last.id, 49);
       
       // For offset batch
-      final offsetBatchedCards = await performanceService.loadCardsBatched(cards, 100, batchSize: 50);
+      final offsetBatchedCards = await performanceService.loadCardsBatched(cards, 100);
       expect(offsetBatchedCards.length, 50);
       expect(offsetBatchedCards.first.id, 100);
       expect(offsetBatchedCards.last.id, 149);
@@ -140,7 +140,7 @@ void main() {
       ));
       
       // Request batch at end
-      final endBatch = await performanceService.loadCardsBatched(cards, 700, batchSize: 50);
+      final endBatch = await performanceService.loadCardsBatched(cards, 700);
       expect(endBatch.length, 75); // Should return all since collection is small
       
       // For large collection, test partial batch at end
@@ -155,7 +155,7 @@ void main() {
         easeFactor: 2.5,
       ));
       
-      final partialBatch = await performanceService.loadCardsBatched(largeCards, 1040, batchSize: 50);
+      final partialBatch = await performanceService.loadCardsBatched(largeCards, 1040);
       expect(partialBatch.length, 20); // Only 20 remaining cards
     });
 

@@ -146,7 +146,7 @@ class ConfettiPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
 
-    for (var confetti in confettis) {
+    for (final confetti in confettis) {
       // Calculer la position actuelle basée sur la progression
       final currentPosition = Offset(
         confetti.position.dx +

@@ -28,7 +28,7 @@ void main() {
             name: 'Test Deck 1',
             description: 'Description 1',
             cardCount: 5,
-            createdAt: DateTime(2023, 1, 1),
+            createdAt: DateTime(2023),
             lastAccessed: DateTime(2023, 1, 3),
           ),
           DeckEntityData(
@@ -36,7 +36,7 @@ void main() {
             name: 'Test Deck 2',
             description: 'Description 2',
             cardCount: 3,
-            createdAt: DateTime(2023, 2, 1),
+            createdAt: DateTime(2023, 2),
             lastAccessed: DateTime(2023, 2, 3),
           ),
         ];
@@ -101,7 +101,7 @@ void main() {
           name: 'Test Deck',
           description: 'Test Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           lastAccessed: DateTime(2023, 1, 3),
         );
 
@@ -147,8 +147,8 @@ void main() {
           name: 'New Deck',
           description: 'New Description',
           cardCount: 0,
-          createdAt: DateTime(2023, 1, 1),
-          updatedAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
+          updatedAt: DateTime(2023),
         );
 
         const generatedId = 1;
@@ -157,8 +157,8 @@ void main() {
           name: 'New Deck',
           description: 'New Description',
           cardCount: 0,
-          createdAt: DateTime(2023, 1, 1),
-          lastAccessed: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
+          lastAccessed: DateTime(2023),
         );
 
         when(mockDecksDao.addDeck(any))
@@ -188,8 +188,8 @@ void main() {
           name: 'New Deck',
           description: 'New Description',
           cardCount: 0,
-          createdAt: DateTime(2023, 1, 1),
-          updatedAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
+          updatedAt: DateTime(2023),
         );
 
         when(mockDecksDao.addDeck(any))
@@ -215,7 +215,7 @@ void main() {
           name: 'Updated Deck',
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 3),
         );
 
@@ -224,7 +224,7 @@ void main() {
           name: 'Updated Deck',
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           lastAccessed: DateTime(2023, 1, 3),
         );
 
@@ -254,7 +254,7 @@ void main() {
           name: 'Updated Deck',
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 3),
         );
 
@@ -279,7 +279,7 @@ void main() {
           name: 'Updated Deck',
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 3),
         );
 

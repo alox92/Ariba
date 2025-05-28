@@ -164,7 +164,7 @@ void main() {
     test('getStatsByPeriod filters and groups review stats correctly',
         () async {
       final deckId = 1;
-      final startDate = DateTime(2025, 5, 1);
+      final startDate = DateTime(2025, 5);
       final endDate = DateTime(2025, 5, 31);
 
       final mockDailyStatsResultMaps = [
@@ -208,7 +208,7 @@ void main() {
     });
 
     test('loadStatsForPeriod fetches data', () async {
-      final startDate = DateTime(2024, 1, 1);
+      final startDate = DateTime(2024);
       final endDate = DateTime(2024, 1, 31);
       final deckId = 1;
 

@@ -77,9 +77,9 @@ class _MatchingGameContentState extends State<_MatchingGameContent>
       builder: (context, viewModel, child) {        return MainLayout(
           child: Stack(
             children: [              if (viewModel.isLoading)
-                LoadingOverlay(
+                const LoadingOverlay(
                   isLoading: true,
-                  child: const SizedBox.shrink(),
+                  child: SizedBox.shrink(),
                 )
               else if (viewModel.isGameCompleted)
                 _buildGameResults(viewModel)
@@ -405,7 +405,7 @@ class _MatchingGameContentState extends State<_MatchingGameContent>
                 ),
               ),
               if (isMatched)
-                Icon(
+                const Icon(
                   Icons.check_circle,
                   color: Colors.green,
                   size: 20,

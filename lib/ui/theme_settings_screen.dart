@@ -175,7 +175,6 @@ class _ThemeSettingsScreenState extends State<ThemeSettingsScreen> {
                         flex: 2,
                         child: Slider(
                           value: prefs.borderRadius,
-                          min: 0.0,
                           max: 24.0,
                           divisions: 24,
                           label: prefs.borderRadius.toStringAsFixed(1),
@@ -197,7 +196,6 @@ class _ThemeSettingsScreenState extends State<ThemeSettingsScreen> {
                         flex: 2,
                         child: Slider(
                           value: prefs.cardElevation,
-                          min: 0.0,
                           max: 10.0,
                           divisions: 10,
                           label: prefs.cardElevation.toStringAsFixed(1),

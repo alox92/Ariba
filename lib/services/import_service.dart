@@ -162,7 +162,7 @@ class ImportService {
 
       // Créer un mapping des notes par leur ID pour un accès facile
       final Map<int, Map<String, Object?>> notesMap = {
-        for (var note in ankiNotes) (note['id'] as int): note,
+        for (final note in ankiNotes) (note['id'] as int): note,
       };
 
       // Préparer le répertoire médias persistant (par deck)
@@ -190,7 +190,7 @@ class ImportService {
                 return null;
               }
 
-              var fieldsString = noteData['flds'] as String?;
+              final fieldsString = noteData['flds'] as String?;
               if (fieldsString == null) {
                 return null;
               }
@@ -243,7 +243,7 @@ class ImportService {
 
       if (newCardsToInsert.isNotEmpty) {
         // Assuming addCards was a typo and it should be multiple individual calls or a batch insert method
-        for (var cardCompanion in newCardsToInsert) {
+        for (final cardCompanion in newCardsToInsert) {
           await _database.cardsDao.addCard(cardCompanion);
         }
       }
@@ -291,7 +291,7 @@ class ImportService {
       }
 
       // Extraire le nom du paquet du nom de fichier
-      String deckName = path.basenameWithoutExtension(path.basename(filePath));
+      final String deckName = path.basenameWithoutExtension(path.basename(filePath));
       // Pourrait être amélioré pour gérer les noms déjà existants ou demander confirmation
 
       final deckCompanion = DeckEntityCompanion.insert(
@@ -332,11 +332,11 @@ class ImportService {
 
         // Créer la carte dans le format JSON pour QuillEditor
         final frontJson = jsonEncode([
-          {"insert": "$front\n"}
+          {'insert': '$front\n'}
         ]);
 
         final backJson = jsonEncode([
-          {"insert": "$back\n"}
+          {'insert': '$back\n'}
         ]);
 
         // Préparation des valeurs pour les champs optionnels/avec conversion
@@ -510,11 +510,11 @@ class ImportService {
       int deckId, String question, String answer) async {
     // Créer la carte dans le format JSON pour QuillEditor
     final frontJson = jsonEncode([
-      {"insert": "$question\n"}
+      {'insert': '$question\n'}
     ]);
 
     final backJson = jsonEncode([
-      {"insert": "$answer\n"}
+      {'insert': '$answer\n'}
     ]);
 
     await _database.cardsDao.addCard(
@@ -645,11 +645,11 @@ class ImportService {
       int deckId, String question, String answer) async {
     // Créer la carte dans le format JSON pour QuillEditor
     final frontJson = jsonEncode([
-      {"insert": "$question\n"}
+      {'insert': '$question\n'}
     ]);
 
     final backJson = jsonEncode([
-      {"insert": "$answer\n"}
+      {'insert': '$answer\n'}
     ]);
 
     await _database.cardsDao.addCard(

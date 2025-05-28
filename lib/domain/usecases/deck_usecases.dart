@@ -23,7 +23,7 @@ class GetDeckByIdUseCase extends UseCase<Deck, int> {
   @override
   Future<Either<Failure, Deck>> call(int id) {
     if (id <= 0) {
-      return Future.value(Left(ValidationFailure('ID du deck invalide')));
+      return Future.value(const Left(ValidationFailure('ID du deck invalide')));
     }
     return repository.getDeckById(id);
   }
@@ -48,11 +48,11 @@ class AddDeckUseCase extends UseCase<Deck, AddDeckParams> {
   Future<Either<Failure, Deck>> call(AddDeckParams params) {
     // Validation
     if (params.name.trim().isEmpty) {
-      return Future.value(Left(ValidationFailure('Le nom du deck ne peut pas être vide')));
+      return Future.value(const Left(ValidationFailure('Le nom du deck ne peut pas être vide')));
     }
     
     if (params.name.length > 100) {
-      return Future.value(Left(ValidationFailure('Le nom du deck ne peut pas dépasser 100 caractères')));
+      return Future.value(const Left(ValidationFailure('Le nom du deck ne peut pas dépasser 100 caractères')));
     }
 
     // Créer l'entité Deck
@@ -77,15 +77,15 @@ class UpdateDeckUseCase extends UseCase<Deck, Deck> {
   Future<Either<Failure, Deck>> call(Deck deck) {
     // Validation
     if (deck.id <= 0) {
-      return Future.value(Left(ValidationFailure('ID du deck invalide')));
+      return Future.value(const Left(ValidationFailure('ID du deck invalide')));
     }
     
     if (deck.name.trim().isEmpty) {
-      return Future.value(Left(ValidationFailure('Le nom du deck ne peut pas être vide')));
+      return Future.value(const Left(ValidationFailure('Le nom du deck ne peut pas être vide')));
     }
     
     if (deck.name.length > 100) {
-      return Future.value(Left(ValidationFailure('Le nom du deck ne peut pas dépasser 100 caractères')));
+      return Future.value(const Left(ValidationFailure('Le nom du deck ne peut pas dépasser 100 caractères')));
     }
 
     // Mettre à jour avec le timestamp
@@ -105,7 +105,7 @@ class DeleteDeckUseCase extends UseCase<Unit, int> {
   @override
   Future<Either<Failure, Unit>> call(int deckId) {
     if (deckId <= 0) {
-      return Future.value(Left(ValidationFailure('ID du deck invalide')));
+      return Future.value(const Left(ValidationFailure('ID du deck invalide')));
     }
     return repository.deleteDeck(deckId);
   }
@@ -119,7 +119,7 @@ class UpdateDeckCardCountUseCase extends UseCase<Unit, int> {
   @override
   Future<Either<Failure, Unit>> call(int deckId) {
     if (deckId <= 0) {
-      return Future.value(Left(ValidationFailure('ID du deck invalide')));
+      return Future.value(const Left(ValidationFailure('ID du deck invalide')));
     }
     return repository.updateCardCount(deckId);
   }

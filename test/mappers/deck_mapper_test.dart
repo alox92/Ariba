@@ -9,7 +9,7 @@ void main() {
       name: 'Test Deck',
       description: 'Test Description',
       cardCount: 5,
-      createdAt: DateTime(2023, 1, 1),
+      createdAt: DateTime(2023),
       lastAccessed: DateTime(2023, 1, 3),
     );
 
@@ -19,7 +19,7 @@ void main() {
     expect(deck.name, 'Test Deck');
     expect(deck.description, 'Test Description');
     expect(deck.cardCount, 5);
-    expect(deck.createdAt, DateTime(2023, 1, 1));
+    expect(deck.createdAt, DateTime(2023));
     expect(deck.updatedAt, DateTime(2023, 1, 3));
   });
 }

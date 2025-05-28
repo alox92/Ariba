@@ -39,16 +39,8 @@ void main() {
           deckId: 1,
           frontText: 'Front Text',
           backText: 'Back Text',
-          frontImagePath: null,
-          backImagePath: null,
-          frontAudioPath: null,
-          backAudioPath: null,
           tags: 'test',
           difficulty: 1,
-          reviewCount: 0,
-          lastReviewed: null,
-          repetitions: 0,
-          easinessFactor: 2.5,
           intervalDays: 1,
           nextReviewDate: DateTime.now(),
           createdAt: DateTime.now(),
@@ -120,9 +112,9 @@ void main() {
           backText: 'Back Text',
         );
 
-        final failure = DatabaseFailure('Database error');
+        const failure = DatabaseFailure('Database error');
         when(mockRepository.addCard(any))
-            .thenAnswer((_) async => Left(failure));
+            .thenAnswer((_) async => const Left(failure));
 
         // Act
         final result = await useCase.call(params);
@@ -149,16 +141,8 @@ void main() {
           deckId: 1,
           frontText: 'Original Front',
           backText: 'Original Back',
-          frontImagePath: null,
-          backImagePath: null,
-          frontAudioPath: null,
-          backAudioPath: null,
           tags: 'original',
           difficulty: 1,
-          reviewCount: 0,
-          lastReviewed: null,
-          repetitions: 0,
-          easinessFactor: 2.5,
           intervalDays: 1,
           nextReviewDate: DateTime.now(),
           createdAt: DateTime.now(),
@@ -203,16 +187,8 @@ void main() {
           deckId: 1,
           frontText: 'Original Front',
           backText: 'Original Back',
-          frontImagePath: null,
-          backImagePath: null,
-          frontAudioPath: null,
-          backAudioPath: null,
           tags: 'original',
           difficulty: 1,
-          reviewCount: 0,
-          lastReviewed: null,
-          repetitions: 0,
-          easinessFactor: 2.5,
           intervalDays: 1,
           nextReviewDate: DateTime.now(),
           createdAt: DateTime.now(),
@@ -245,16 +221,8 @@ void main() {
           deckId: 1,
           frontText: 'Original Front',
           backText: 'Original Back',
-          frontImagePath: null,
-          backImagePath: null,
-          frontAudioPath: null,
-          backAudioPath: null,
           tags: 'original',
           difficulty: 1,
-          reviewCount: 0,
-          lastReviewed: null,
-          repetitions: 0,
-          easinessFactor: 2.5,
           intervalDays: 1,
           nextReviewDate: DateTime.now(),
           createdAt: DateTime.now(),
@@ -287,16 +255,8 @@ void main() {
           deckId: 1,
           frontText: 'Original Front',
           backText: 'Original Back',
-          frontImagePath: null,
-          backImagePath: null,
-          frontAudioPath: null,
-          backAudioPath: null,
           tags: 'original',
           difficulty: 1,
-          reviewCount: 0,
-          lastReviewed: null,
-          repetitions: 0,
-          easinessFactor: 2.5,
           intervalDays: 1,
           nextReviewDate: DateTime.now(),
           createdAt: DateTime.now(),
@@ -309,9 +269,9 @@ void main() {
           backText: 'Updated Back',
         );
 
-        final failure = DatabaseFailure('Update failed');
+        const failure = DatabaseFailure('Update failed');
         when(mockRepository.updateCard(any))
-            .thenAnswer((_) async => Left(failure));
+            .thenAnswer((_) async => const Left(failure));
 
         // Act
         final result = await useCase.call(params);
@@ -369,9 +329,9 @@ void main() {
       test('should return failure when repository fails', () async {
         // Arrange
         const cardId = 1;
-        final failure = DatabaseFailure('Delete failed');
+        const failure = DatabaseFailure('Delete failed');
         when(mockRepository.deleteCard(cardId))
-            .thenAnswer((_) async => Left(failure));
+            .thenAnswer((_) async => const Left(failure));
 
         // Act
         final result = await useCase.call(cardId);
@@ -400,16 +360,8 @@ void main() {
             deckId: deckId,
             frontText: 'Front 1',
             backText: 'Back 1',
-            frontImagePath: null,
-            backImagePath: null,
-            frontAudioPath: null,
-            backAudioPath: null,
             tags: 'test',
             difficulty: 1,
-            reviewCount: 0,
-            lastReviewed: null,
-            repetitions: 0,
-            easinessFactor: 2.5,
             intervalDays: 1,
             nextReviewDate: DateTime.now(),
             createdAt: DateTime.now(),
@@ -420,16 +372,8 @@ void main() {
             deckId: deckId,
             frontText: 'Front 2',
             backText: 'Back 2',
-            frontImagePath: null,
-            backImagePath: null,
-            frontAudioPath: null,
-            backAudioPath: null,
             tags: 'test',
             difficulty: 1,
-            reviewCount: 0,
-            lastReviewed: null,
-            repetitions: 0,
-            easinessFactor: 2.5,
             intervalDays: 1,
             nextReviewDate: DateTime.now(),
             createdAt: DateTime.now(),
@@ -467,8 +411,8 @@ void main() {
       test('should return failure when repository fails', () async {
         // Arrange
         const deckId = 1;
-        final failure = DatabaseFailure('Database error');        when(mockRepository.watchCardsByDeck(deckId))
-            .thenAnswer((_) => Stream.value(Left(failure)));
+        const failure = DatabaseFailure('Database error');        when(mockRepository.watchCardsByDeck(deckId))
+            .thenAnswer((_) => Stream.value(const Left(failure)));
 
         // Act
         final result = useCase.call(deckId);
@@ -498,16 +442,8 @@ void main() {
             deckId: deckId,
             frontText: 'Due Card',
             backText: 'Back Text',
-            frontImagePath: null,
-            backImagePath: null,
-            frontAudioPath: null,
-            backAudioPath: null,
             tags: 'test',
             difficulty: 1,
-            reviewCount: 0,
-            lastReviewed: null,
-            repetitions: 0,
-            easinessFactor: 2.5,
             intervalDays: 1,
             nextReviewDate: DateTime.now().subtract(const Duration(days: 1)),
             createdAt: DateTime.now(),
@@ -544,9 +480,9 @@ void main() {
       test('should return failure when repository fails', () async {
         // Arrange
         const deckId = 1;
-        final failure = DatabaseFailure('Database error');
+        const failure = DatabaseFailure('Database error');
         when(mockRepository.watchCardsDueForReview(deckId))
-            .thenAnswer((_) => Stream.value(Left(failure)));        // Act
+            .thenAnswer((_) => Stream.value(const Left(failure)));        // Act
         final result = useCase.call(deckId);
 
         // Assert
@@ -573,16 +509,8 @@ void main() {
           deckId: 1,
           frontText: 'Front Text',
           backText: 'Back Text',
-          frontImagePath: null,
-          backImagePath: null,
-          frontAudioPath: null,
-          backAudioPath: null,
           tags: 'test',
           difficulty: 1,
-          reviewCount: 0,
-          lastReviewed: null,
-          repetitions: 0,
-          easinessFactor: 2.5,
           intervalDays: 1,
           nextReviewDate: DateTime.now(),
           createdAt: DateTime.now(),
@@ -624,9 +552,9 @@ void main() {
       test('should return failure when repository fails', () async {
         // Arrange
         const cardId = 1;
-        final failure = DatabaseFailure('Card not found');
+        const failure = DatabaseFailure('Card not found');
         when(mockRepository.getCard(cardId))
-            .thenAnswer((_) async => Left(failure));
+            .thenAnswer((_) async => const Left(failure));
 
         // Act
         final result = await useCase.call(cardId);

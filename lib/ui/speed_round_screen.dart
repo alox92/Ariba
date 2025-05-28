@@ -114,7 +114,7 @@ class _SpeedRoundContentState extends State<_SpeedRoundContent>
                 _buildGameContent(viewModel),
               
               if (_showConfetti)
-                ConfettiAnimation(play: true),
+                const ConfettiAnimation(play: true),
             ],
           ),
         );
@@ -128,7 +128,7 @@ class _SpeedRoundContentState extends State<_SpeedRoundContent>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.flash_on,
             size: 80,
             color: Colors.orange,
@@ -188,7 +188,7 @@ class _SpeedRoundContentState extends State<_SpeedRoundContent>
                 scale: _pulseAnimation.value,
                 child: PrimaryButton(
                   onPressed: viewModel.startGame,
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(Icons.play_arrow),
@@ -253,11 +253,11 @@ class _SpeedRoundContentState extends State<_SpeedRoundContent>
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.whatshot, color: Colors.orange, size: 20),
+                  const Icon(Icons.whatshot, color: Colors.orange, size: 20),
                   const SizedBox(width: 8),
                   Text(
                     '${viewModel.streak}x Streak!',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.orange,
                       fontWeight: FontWeight.bold,
                     ),
@@ -347,7 +347,7 @@ class _SpeedRoundContentState extends State<_SpeedRoundContent>
                   _showAnswer = true;
                 });
               },
-              child: Row(
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(Icons.visibility),
@@ -404,7 +404,7 @@ class _SpeedRoundContentState extends State<_SpeedRoundContent>
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Icon(
               Icons.star,
               color: Colors.amber,
             ),
@@ -432,7 +432,7 @@ class _SpeedRoundContentState extends State<_SpeedRoundContent>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.flag,
             size: 80,
             color: Colors.orange,
@@ -491,7 +491,7 @@ class _SpeedRoundContentState extends State<_SpeedRoundContent>
               Expanded(
                 child: PrimaryButton(
                   onPressed: viewModel.restartGame,
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(Icons.refresh),
@@ -575,7 +575,7 @@ class _SpeedRoundContentState extends State<_SpeedRoundContent>
                 // Reload the provider to restart the ViewModel
                 context.read<SpeedRoundViewModel>().restartGame();
               },
-              child: Row(
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(Icons.refresh),

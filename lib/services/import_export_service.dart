@@ -34,7 +34,7 @@ class ImportExportService {
 
       final cards = await _database.cardsDao.getCardsForDeck(deckId);
 
-      List<List<dynamic>> rows = [];
+      final List<List<dynamic>> rows = [];
 
       // Entêtes CSV
       rows.add([
@@ -51,7 +51,7 @@ class ImportExportService {
         'easeFactor'
       ]);
 
-      for (var card in cards) {
+      for (final card in cards) {
         rows.add([
           card.frontText,
           card.backText,
@@ -67,7 +67,7 @@ class ImportExportService {
         ]);
       }
 
-      String csvData = const ListToCsvConverter().convert(rows);
+      final String csvData = const ListToCsvConverter().convert(rows);
 
       final directory = await getApplicationDocumentsDirectory();
       // Remplacer les caractères invalides dans le nom du fichier
@@ -117,7 +117,7 @@ class ImportExportService {
         'interval',
         'easeFactor'
       ];
-      List<dynamic> headerRow = rowsAsListOfValues[0];
+      final List<dynamic> headerRow = rowsAsListOfValues[0];
 
       // Check if headerRow has enough elements and if the critical headers match
       if (headerRow.length < 2 ||
@@ -129,7 +129,7 @@ class ImportExportService {
       }
 
       // Extraire le nom du paquet du nom de fichier (ou le demander)
-      String deckName = p.basenameWithoutExtension(filePath);
+      final String deckName = p.basenameWithoutExtension(filePath);
 
       // Créer un nouveau paquet
       final deckId = await _database.decksDao.addDeck(
@@ -148,23 +148,23 @@ class ImportExportService {
         if (row.length >= 2) {
           // Au moins frontText et backText
           try {
-            String frontTextValue = row[0].toString();
-            String backTextValue = row[1].toString();
-            String tagsValue =
+            final String frontTextValue = row[0].toString();
+            final String backTextValue = row[1].toString();
+            final String tagsValue =
                 row.length > 2 && row[2] != null ? row[2].toString() : '';
-            String? frontImageValue =
+            final String? frontImageValue =
                 row.length > 3 && row[3] != null && row[3].toString().isNotEmpty
                     ? row[3].toString()
                     : null;
-            String? backImageValue =
+            final String? backImageValue =
                 row.length > 4 && row[4] != null && row[4].toString().isNotEmpty
                     ? row[4].toString()
                     : null;
-            String? frontAudioValue =
+            final String? frontAudioValue =
                 row.length > 5 && row[5] != null && row[5].toString().isNotEmpty
                     ? row[5].toString()
                     : null;
-            String? backAudioValue =
+            final String? backAudioValue =
                 row.length > 6 && row[6] != null && row[6].toString().isNotEmpty
                     ? row[6].toString()
                     : null;

@@ -232,10 +232,10 @@ class _StudyModeSettingsScreenState extends State<StudyModeSettingsScreen> {
           subtitle: Text(_getDifficultyText(_speedRoundDifficulty)),
           trailing: DropdownButton<int>(
             value: _speedRoundDifficulty,
-            items: [
-              const DropdownMenuItem(value: 1, child: Text('Easy')),
-              const DropdownMenuItem(value: 2, child: Text('Medium')),
-              const DropdownMenuItem(value: 3, child: Text('Hard')),
+            items: const [
+              DropdownMenuItem(value: 1, child: Text('Easy')),
+              DropdownMenuItem(value: 2, child: Text('Medium')),
+              DropdownMenuItem(value: 3, child: Text('Hard')),
             ],
             onChanged: (value) => setState(() => _speedRoundDifficulty = value ?? 2),
           ),

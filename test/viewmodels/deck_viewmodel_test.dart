@@ -43,8 +43,8 @@ void main() {
     name: 'Test Deck 1',
     description: 'Description 1',
     cardCount: 5,
-    createdAt: DateTime(2024, 1, 1),
-    updatedAt: DateTime(2024, 1, 1),
+    createdAt: DateTime(2024),
+    updatedAt: DateTime(2024),
   );
 
   final mockDeck2 = Deck(
@@ -111,9 +111,9 @@ void main() {
 
     test('loadDecks failure updates error state', () async {
       // Arrange
-      final failure = DatabaseFailure('Database error');
+      const failure = DatabaseFailure('Database error');
       when(mockGetDecksUseCase()).thenAnswer(
-        (_) => Stream.value(Left(failure)),
+        (_) => Stream.value(const Left(failure)),
       );
 
       // Act
@@ -155,9 +155,9 @@ void main() {
 
     test('addDeck failure updates error state', () async {
       // Arrange
-      final failure = ValidationFailure('Invalid name');
+      const failure = ValidationFailure('Invalid name');
       when(mockAddDeckUseCase(any)).thenAnswer(
-        (_) async => Left(failure),
+        (_) async => const Left(failure),
       );
 
       // Act
@@ -201,9 +201,9 @@ void main() {
 
     test('updateDeck failure when getting deck fails', () async {
       // Arrange
-      final failure = DatabaseFailure('Deck not found');
+      const failure = DatabaseFailure('Deck not found');
       when(mockGetDeckByIdUseCase(1)).thenAnswer(
-        (_) async => Left(failure),
+        (_) async => const Left(failure),
       );
 
       // Act
@@ -221,9 +221,9 @@ void main() {
       when(mockGetDeckByIdUseCase(1)).thenAnswer(
         (_) async => Right(mockDeck1),
       );
-      final failure = DatabaseFailure('Update failed');
+      const failure = DatabaseFailure('Update failed');
       when(mockUpdateDeckUseCase(any)).thenAnswer(
-        (_) async => Left(failure),
+        (_) async => const Left(failure),
       );
 
       // Act
@@ -253,9 +253,9 @@ void main() {
 
     test('deleteDeck failure updates error state', () async {
       // Arrange
-      final failure = DatabaseFailure('Delete failed');
+      const failure = DatabaseFailure('Delete failed');
       when(mockDeleteDeckUseCase(1)).thenAnswer(
-        (_) async => Left(failure),
+        (_) async => const Left(failure),
       );
 
       // Act
@@ -317,8 +317,8 @@ void main() {
     });
 
     test('stream listening handles failure', () async {      // Arrange
-      final failure = DatabaseFailure('Stream error');
-      final streamController = Stream.value(Left<Failure, List<Deck>>(failure));
+      const failure = DatabaseFailure('Stream error');
+      final streamController = Stream.value(const Left<Failure, List<Deck>>(failure));
       when(mockGetDecksUseCase()).thenAnswer((_) => streamController);
 
       // Act - trigger stream listening by creating new ViewModel
@@ -342,7 +342,7 @@ void main() {
     test('error state is cleared on new operations', () async {
       // Arrange - set initial error
       when(mockAddDeckUseCase(any)).thenAnswer(
-        (_) async => Left(DatabaseFailure('Initial error')),
+        (_) async => const Left(DatabaseFailure('Initial error')),
       );
       await deckViewModel.addDeck('Failed Deck', 'Failed Description');
       expect(deckViewModel.error, isNotNull);

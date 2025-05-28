@@ -69,7 +69,7 @@ class _ReviewScreenContentState extends State<_ReviewScreenContent>
   bool _showConfetti = false;
 
   se.MutableDocument _initializeReadOnlyDocument(String? content) {
-    final String textContent = content ?? "";
+    final String textContent = content ?? '';
     // Assuming plain text. If content can be structured (e.g., Markdown, HTML),
     // a more sophisticated deserialization would be needed here.
     return se.MutableDocument(nodes: [
@@ -142,8 +142,8 @@ class _ReviewScreenContentState extends State<_ReviewScreenContent>
   void _updateSuperEditorDocuments() {
     // Renamed from _updateQuillControllers
     // Use the ViewModel's reverse-mode-aware text getters
-    final String frontText = _viewModel.currentFrontText ?? "";
-    final String backText = _viewModel.currentBackText ?? "";
+    final String frontText = _viewModel.currentFrontText ?? '';
+    final String backText = _viewModel.currentBackText ?? '';
 
     // Create new documents with the new content
     final newFrontDocument = _initializeReadOnlyDocument(frontText);

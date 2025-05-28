@@ -259,12 +259,12 @@ class _QuizModeContentState extends State<_QuizModeContent>
               onPressed: viewModel.selectedAnswerIndex != null 
                   ? viewModel.submitAnswer 
                   : () {},
-              child: Row(
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.send),
-                  const SizedBox(width: 8),
-                  const Text('Submit Answer'),
+                  Icon(Icons.send),
+                  SizedBox(width: 8),
+                  Text('Submit Answer'),
                 ],
               ),
             ),
@@ -353,12 +353,12 @@ class _QuizModeContentState extends State<_QuizModeContent>
             children: [
               Expanded(                child: PrimaryButton(
                   onPressed: viewModel.retryQuiz,
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.refresh),
-                      const SizedBox(width: 8),
-                      const Text('Retry Quiz'),
+                      Icon(Icons.refresh),
+                      SizedBox(width: 8),
+                      Text('Retry Quiz'),
                     ],
                   ),
                 ),
@@ -403,12 +403,12 @@ class _QuizModeContentState extends State<_QuizModeContent>
             ),
             const SizedBox(height: 24),            PrimaryButton(
               onPressed: viewModel.loadQuiz,
-              child: Row(
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.refresh),
-                  const SizedBox(width: 8),
-                  const Text('Retry'),
+                  Icon(Icons.refresh),
+                  SizedBox(width: 8),
+                  Text('Retry'),
                 ],
               ),
             ),

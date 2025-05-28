@@ -35,11 +35,7 @@ void main() {
       tags: 'test',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
-      easinessFactor: 2.5,
       intervalDays: 1,
-      repetitions: 0,
-      reviewCount: 0,
-      lastReviewed: null,
       nextReviewDate: DateTime.now(),
     );
 
@@ -293,11 +289,7 @@ void main() {
         tags: 'test',
         createdAt: DateTime.now().subtract(const Duration(days: 5)),
         updatedAt: DateTime.now(),
-        easinessFactor: 2.5,
         intervalDays: 1,
-        repetitions: 0, // New card
-        reviewCount: 0,
-        lastReviewed: null,
         nextReviewDate: DateTime.now().subtract(const Duration(hours: 1)), // Due
       ),
       Card(
@@ -403,7 +395,6 @@ void main() {
           tags: 'test',
           createdAt: twoDaysAgo,
           updatedAt: today,
-          easinessFactor: 2.5,
           intervalDays: 1,
           repetitions: 1,
           reviewCount: 1,
@@ -418,7 +409,6 @@ void main() {
           tags: 'test',
           createdAt: yesterday,
           updatedAt: today,
-          easinessFactor: 2.5,
           intervalDays: 1,
           repetitions: 1,
           reviewCount: 1,
@@ -433,7 +423,6 @@ void main() {
           tags: 'test',
           createdAt: today,
           updatedAt: today,
-          easinessFactor: 2.5,
           intervalDays: 1,
           repetitions: 1,
           reviewCount: 1,
@@ -555,7 +544,6 @@ void main() {
         intervalDays: 1,
         repetitions: 0,
         reviewCount: 0,
-        lastReviewed: null,
         nextReviewDate: DateTime.now(),
       );
       

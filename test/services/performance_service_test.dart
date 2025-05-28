@@ -131,7 +131,7 @@ void main() {
         final cards = List.generate(1000, (i) => _createTestCard(i));
         
         // Act
-        final result = await performanceService.loadCardsBatched(cards, 0, batchSize: 50);
+        final result = await performanceService.loadCardsBatched(cards, 0);
         
         // Assert
         expect(result.length, 50);
@@ -157,7 +157,7 @@ void main() {
         final cards = List.generate(1000, (i) => _createTestCard(i));
         
         // Act
-        final result = await performanceService.loadCardsBatched(cards, 990, batchSize: 50);
+        final result = await performanceService.loadCardsBatched(cards, 990);
         
         // Assert
         expect(result.length, 10); // Only 10 cards remaining
@@ -360,7 +360,6 @@ FlashCard _createTestCard(int id) {
     backText: 'Back $id',
     tags: 'test',
     createdAt: DateTime.now(),
-    lastReviewed: null,
     interval: 1,
     easeFactor: 2.5,
   );

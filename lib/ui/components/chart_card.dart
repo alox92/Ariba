@@ -24,7 +24,7 @@ class ChartCard extends StatelessWidget {
                   fontWeight: FontWeight.w600),
             ),
           ),
-          Expanded(
+          const Expanded(
             child: Center(
               child: Text(
                 'Chart Placeholder',

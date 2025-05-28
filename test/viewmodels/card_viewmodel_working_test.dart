@@ -40,13 +40,10 @@ void main() {
     frontText: 'Question 1',
     backText: 'Answer 1',
     difficulty: 1,
-    reviewCount: 0,
-    easinessFactor: 2.5,
-    repetitions: 0,
     intervalDays: 1,
     nextReviewDate: DateTime.now().add(const Duration(days: 1)),
-    createdAt: DateTime(2024, 1, 1),
-    updatedAt: DateTime(2024, 1, 1),
+    createdAt: DateTime(2024),
+    updatedAt: DateTime(2024),
   );
 
   final mockCard2 = domain.Card(
@@ -114,7 +111,7 @@ void main() {
 
     test('loadCardsForDeck handles error correctly', () async {      // Arrange
       when(mockGetCardsByDeckUseCase.call(any)).thenAnswer(
-        (_) => Stream.value(Left<Failure, List<domain.Card>>(DatabaseFailure('Test error'))),
+        (_) => Stream.value(const Left<Failure, List<domain.Card>>(DatabaseFailure('Test error'))),
       );
 
       // Act
@@ -177,7 +174,7 @@ void main() {
         (_) async => {},
       );
       when(mockGetCardsByDeckUseCase.call(any)).thenAnswer(
-        (_) => Stream.value(Right<Failure, List<domain.Card>>([])),
+        (_) => Stream.value(const Right<Failure, List<domain.Card>>([])),
       );
 
       // Act
@@ -235,7 +232,7 @@ void main() {
 
     test('error handling for failed operations', () async {      // Arrange
       when(mockAddCardUseCase.call(any)).thenAnswer(
-        (_) async => Left<Failure, domain.Card>(DatabaseFailure('Test error')),
+        (_) async => const Left<Failure, domain.Card>(DatabaseFailure('Test error')),
       );
 
       // Act

@@ -43,16 +43,10 @@ void main() {
     frontText: 'Front 1',
     backText: 'Back 1',
     tags: 'tag1,tag2',
-    createdAt: DateTime(2024, 1, 1),
-    updatedAt: DateTime(2024, 1, 1),
-    lastReviewed: DateTime(2024, 1, 1),
+    createdAt: DateTime(2024),
+    updatedAt: DateTime(2024),
+    lastReviewed: DateTime(2024),
     intervalDays: 1,
-    easinessFactor: 2.5,
-    reviewCount: 0,
-    frontImagePath: null,
-    backImagePath: null,
-    frontAudioPath: null,
-    backAudioPath: null,
   );
 
   final mockCard2 = Card(
@@ -130,9 +124,9 @@ void main() {
 
     test('loadCardsForDeck failure updates error state', () async {
       // Arrange
-      final failure = DatabaseFailure('Database error');
+      const failure = DatabaseFailure('Database error');
       when(mockGetCardsByDeckUseCase(1)).thenAnswer(
-        (_) => Stream.value(Left(failure)),
+        (_) => Stream.value(const Left(failure)),
       );
 
       // Act
@@ -184,9 +178,9 @@ void main() {
 
     test('addCard failure updates error state', () async {
       // Arrange
-      final failure = ValidationFailure('Invalid content');
+      const failure = ValidationFailure('Invalid content');
       when(mockAddCardUseCase(any)).thenAnswer(
-        (_) async => Left(failure),
+        (_) async => const Left(failure),
       );
 
       // Act
@@ -272,9 +266,9 @@ void main() {
 
     test('updateCard failure when getting card fails', () async {
       // Arrange
-      final failure = DatabaseFailure('Card not found');
+      const failure = DatabaseFailure('Card not found');
       when(mockGetCardUseCase(1)).thenAnswer(
-        (_) async => Left(failure),
+        (_) async => const Left(failure),
       );
 
       // Act
@@ -332,7 +326,7 @@ void main() {
       );
       when(mockMediaService.deleteMedia(any)).thenAnswer((_) async => true);
       when(mockGetCardsByDeckUseCase(1)).thenAnswer(
-        (_) => Stream.value(Right([])),
+        (_) => Stream.value(const Right([])),
       );
 
       // Act
@@ -352,9 +346,9 @@ void main() {
 
     test('deleteCard handles missing card gracefully', () async {
       // Arrange
-      final failure = DatabaseFailure('Card not found');
+      const failure = DatabaseFailure('Card not found');
       when(mockGetCardUseCase(1)).thenAnswer(
-        (_) async => Left(failure),
+        (_) async => const Left(failure),
       );
 
       // Act
@@ -421,9 +415,9 @@ void main() {
 
     test('markCardAsReviewed handles failure gracefully', () async {
       // Arrange
-      final failure = DatabaseFailure('Update failed');
+      const failure = DatabaseFailure('Update failed');
       when(mockGetCardUseCase(1)).thenAnswer(
-        (_) async => Left(failure),
+        (_) async => const Left(failure),
       );
 
       // Act
@@ -437,24 +431,24 @@ void main() {
 
     test('error messages are properly formatted', () async {
       // Test different failure types
-      final databaseFailure = DatabaseFailure('DB error');
-      final validationFailure = ValidationFailure('Validation error');
-      final unknownFailure = UnknownFailure('Network error');
+      const databaseFailure = DatabaseFailure('DB error');
+      const validationFailure = ValidationFailure('Validation error');
+      const unknownFailure = UnknownFailure('Network error');
 
       when(mockAddCardUseCase(any)).thenAnswer(
-        (_) async => Left(databaseFailure),
+        (_) async => const Left(databaseFailure),
       );
       await cardViewModel.addCard(1, 'Front', 'Back');
       expect(cardViewModel.error, contains('base de données'));
 
       when(mockAddCardUseCase(any)).thenAnswer(
-        (_) async => Left(validationFailure),
+        (_) async => const Left(validationFailure),
       );
       await cardViewModel.addCard(1, 'Front', 'Back');
       expect(cardViewModel.error, contains('validation'));
 
       when(mockAddCardUseCase(any)).thenAnswer(
-        (_) async => Left(unknownFailure),
+        (_) async => const Left(unknownFailure),
       );
       await cardViewModel.addCard(1, 'Front', 'Back');
       expect(cardViewModel.error, contains('inconnue'));
@@ -482,7 +476,7 @@ void main() {
     test('error state is cleared on new operations', () async {
       // Arrange - set initial error
       when(mockAddCardUseCase(any)).thenAnswer(
-        (_) async => Left(DatabaseFailure('Initial error')),
+        (_) async => const Left(DatabaseFailure('Initial error')),
       );
       await cardViewModel.addCard(1, 'Failed', 'Failed');
       expect(cardViewModel.error, isNotNull);

@@ -23,7 +23,7 @@ class _StudySessionAnalyticsScreenState extends State<StudySessionAnalyticsScree
   // Mock data - In a real app, this would come from a database
   final List<StudySessionData> _sessions = [
     StudySessionData(
-      date: DateTime.now().subtract(const Duration(days: 0)),
+      date: DateTime.now().subtract(const Duration()),
       mode: 'Quiz Mode',
       score: 85,
       totalQuestions: 20,
@@ -187,7 +187,6 @@ class _StudySessionAnalyticsScreenState extends State<StudySessionAnalyticsScree
               height: 200,
               child: LineChart(
                 LineChartData(
-                  gridData: const FlGridData(show: true),
                   titlesData: FlTitlesData(
                     leftTitles: AxisTitles(
                       sideTitles: SideTitles(
@@ -211,8 +210,8 @@ class _StudySessionAnalyticsScreenState extends State<StudySessionAnalyticsScree
                         },
                       ),
                     ),
-                    topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                    topTitles: const AxisTitles(),
+                    rightTitles: const AxisTitles(),
                   ),
                   borderData: FlBorderData(show: true),
                   lineBarsData: [
@@ -223,7 +222,6 @@ class _StudySessionAnalyticsScreenState extends State<StudySessionAnalyticsScree
                       isCurved: true,
                       color: Theme.of(context).colorScheme.primary,
                       barWidth: 3,
-                      dotData: const FlDotData(show: true),
                     ),
                   ],
                   minY: 0,
@@ -333,9 +331,8 @@ class _StudySessionAnalyticsScreenState extends State<StudySessionAnalyticsScree
                 BarChartData(
                   alignment: BarChartAlignment.spaceAround,
                   maxY: 1,
-                  barTouchData: BarTouchData(enabled: false),
+                  barTouchData: const BarTouchData(enabled: false),
                   titlesData: FlTitlesData(
-                    show: true,
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
@@ -366,8 +363,8 @@ class _StudySessionAnalyticsScreenState extends State<StudySessionAnalyticsScree
                         },
                       ),
                     ),
-                    topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                    topTitles: const AxisTitles(),
+                    rightTitles: const AxisTitles(),
                   ),
                   borderData: FlBorderData(show: false),
                   barGroups: modeAverages.entries.toList().asMap().entries.map((entry) {

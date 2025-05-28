@@ -64,7 +64,7 @@ class ReviewViewModel extends ChangeNotifier {
     try {
       final result = await _getCardsByDeckUseCase(deckId).first;
       result.fold(
-        (failure) => _error = "Erreur lors du chargement des cartes à réviser: ${failure.message}",
+        (failure) => _error = 'Erreur lors du chargement des cartes à réviser: ${failure.message}',
         (allCards) {
           // Include all cards for review (disable SRS date filtering during testing)
           _cardsToReview = List.from(allCards);
@@ -76,7 +76,7 @@ class ReviewViewModel extends ChangeNotifier {
         },
       );
     } catch (e) {
-      _error = "Erreur lors du chargement des cartes à réviser: $e";
+      _error = 'Erreur lors du chargement des cartes à réviser: $e';
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -123,7 +123,7 @@ class ReviewViewModel extends ChangeNotifier {
 
       final result = await _reviewCardUseCase(params);
       result.fold(
-        (failure) => _error = "Erreur lors de la mise à jour de la carte: ${failure.message}",
+        (failure) => _error = 'Erreur lors de la mise à jour de la carte: ${failure.message}',
         (updatedCard) {
           // Mettre à jour la carte dans la liste locale
           final index = _cardsToReview.indexWhere((c) => c.id == card.id);
@@ -135,7 +135,7 @@ class ReviewViewModel extends ChangeNotifier {
         },
       );
     } catch (e) {
-      _error = "Erreur lors de la mise à jour de la carte: $e";
+      _error = 'Erreur lors de la mise à jour de la carte: $e';
       notifyListeners();
     }
   }

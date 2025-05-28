@@ -103,7 +103,6 @@ class HomeScreen extends StatelessWidget {
         return OpenContainer(
           transitionType: ContainerTransitionType.fadeThrough,
           closedElevation: 2,
-          openElevation: 4,
           closedShape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           closedColor: theme.colorScheme.surface,

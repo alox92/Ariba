@@ -43,7 +43,7 @@ class _BackgroundWidgetState extends State<BackgroundWidget>
               return Container(
                 decoration: BoxDecoration(
                   gradient: SweepGradient(
-                    colors: [
+                    colors: const [
                       Colors.blueAccent,
                       Colors.cyanAccent,
                       Colors.blueAccent,
@@ -65,7 +65,7 @@ class _BackgroundWidgetState extends State<BackgroundWidget>
               return Container(
                 decoration: BoxDecoration(
                   gradient: RadialGradient(
-                    colors: [Colors.deepPurple, Colors.black],
+                    colors: const [Colors.deepPurple, Colors.black],
                     radius: 0.85,
                     focal: Alignment(0.5 * (1 + _animation.value * 2 - 1),
                         0.5 * (1 - _animation.value * 2 + 1)),

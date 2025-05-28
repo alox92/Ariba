@@ -80,9 +80,8 @@ class MediaService {
   Future<String?> pickAudio() async {
     try {
       // Utiliser file_picker pour sélectionner un fichier audio
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
+      final FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.audio,
-        allowMultiple: false,
       );
 
       if (result == null || result.files.isEmpty) {

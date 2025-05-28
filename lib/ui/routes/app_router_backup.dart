@@ -51,12 +51,12 @@ class AppRouter {
         path: '/',
         name: 'dashboard',
         builder: (BuildContext context, GoRouterState state) =>
-            MainLayout(child: const DashboardScreen()),
+            const MainLayout(child: DashboardScreen()),
         routes: [
           GoRoute(
             path: 'decks',
             name: 'home',
-            builder: (context, state) => MainLayout(child: const HomeScreen()),
+            builder: (context, state) => const MainLayout(child: HomeScreen()),
             routes: <RouteBase>[
               GoRoute(
                 name: 'deckDetail',
@@ -79,7 +79,7 @@ class AppRouter {
                       }
                       // EditCardScreen expects domain.Deck and domain.Card?
                       return MainLayout(
-                          child: EditCardScreen(deck: deck, card: null));
+                          child: EditCardScreen(deck: deck));
                     },
                   ),                  GoRoute(
                     name: 'editCard',
@@ -161,7 +161,7 @@ class AppRouter {
           GoRoute(
             name: 'statsGlobal',
             path: 'stats',
-            builder: (context, state) => MainLayout(child: const StatsScreen()),
+            builder: (context, state) => const MainLayout(child: StatsScreen()),
             routes: [
               GoRoute(
                   name: 'statsDeck',
@@ -182,7 +182,7 @@ class AppRouter {
             name: 'notifications',
             path: 'notifications',
             builder: (context, state) =>
-                MainLayout(child: const NotificationsScreen()),
+                const MainLayout(child: NotificationsScreen()),
           ),
           GoRoute(
             name: 'settings',
@@ -198,12 +198,12 @@ class AppRouter {
                   name: 'themeSettings',
                   path: 'theme',
                   builder: (ctx, state) =>
-                      MainLayout(child: const ThemeSettingsScreen())),
+                      const MainLayout(child: ThemeSettingsScreen())),
               GoRoute(
                   name: 'performanceSettings',
                   path: 'performance',
                   builder: (ctx, state) =>
-                      MainLayout(child: const PerformanceSettingsScreen())),
+                      const MainLayout(child: PerformanceSettingsScreen())),
             ],
           ),
         ],
@@ -211,7 +211,7 @@ class AppRouter {
       GoRoute(
           path: '/navError',
           builder: (ctx, state) => Scaffold(
-              appBar: AppBar(title: Text('Erreur')),
+              appBar: AppBar(title: const Text('Erreur')),
               body: Center(child: Text('Navigation error: ${state.uri}')))),
     ],
   );

@@ -41,13 +41,10 @@ void main() {
     frontText: 'Question 1',
     backText: 'Answer 1',
     difficulty: 1,
-    reviewCount: 0,
-    easinessFactor: 2.5,
-    repetitions: 0,
     intervalDays: 1,
     nextReviewDate: DateTime.now().add(const Duration(days: 1)),
-    createdAt: DateTime(2024, 1, 1),
-    updatedAt: DateTime(2024, 1, 1),
+    createdAt: DateTime(2024),
+    updatedAt: DateTime(2024),
   );
 
   final mockCard2 = domain.Card(
@@ -56,9 +53,6 @@ void main() {
     frontText: 'Question 2',
     backText: 'Answer 2',
     difficulty: 1,
-    reviewCount: 0,
-    easinessFactor: 2.5,
-    repetitions: 0,
     intervalDays: 1,
     nextReviewDate: DateTime.now().add(const Duration(days: 2)),
     createdAt: DateTime(2024, 1, 2),
@@ -117,9 +111,9 @@ void main() {
 
     test('loadCardsForDeck failure updates error state', () async {
       // Arrange
-      final failure = DatabaseFailure('Database error');
+      const failure = DatabaseFailure('Database error');
       when(mockGetCardsByDeckUseCase.call(any)).thenAnswer(
-        (_) => Stream.value(Left<Failure, List<domain.Card>>(failure)),
+        (_) => Stream.value(const Left<Failure, List<domain.Card>>(failure)),
       );
 
       // Act
@@ -157,9 +151,9 @@ void main() {
 
     test('error contains proper French messages', () async {
       // Arrange
-      final failure = ValidationFailure('Invalid data');
+      const failure = ValidationFailure('Invalid data');
       when(mockGetCardsByDeckUseCase.call(any)).thenAnswer(
-        (_) => Stream.value(Left<Failure, List<domain.Card>>(failure)),
+        (_) => Stream.value(const Left<Failure, List<domain.Card>>(failure)),
       );
 
       // Act
@@ -241,7 +235,7 @@ void main() {
         (_) async => const Right<Failure, Unit>(unit),
       );
       when(mockGetCardsByDeckUseCase.call(any)).thenAnswer(
-        (_) => Stream.value(Right<Failure, List<domain.Card>>([])),
+        (_) => Stream.value(const Right<Failure, List<domain.Card>>([])),
       );
 
       // Act

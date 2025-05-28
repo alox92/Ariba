@@ -122,7 +122,7 @@ class AppTheme {
       pageTransitionsTheme: PageTransitionsTheme(
         builders: {
           for (final platform in TargetPlatform.values)
-            platform: SharedAxisPageTransitionsBuilder(
+            platform: const SharedAxisPageTransitionsBuilder(
               transitionType: SharedAxisTransitionType.horizontal,
             ),
         },

@@ -51,8 +51,8 @@ class CardViewModel extends ChangeNotifier {
         (cards) => _cards = cards,
       );
     } catch (e) {
-      _error = "Erreur chargement cartes: ${e.toString()}";
-      debugPrint("Error loading cards for deck: $e");
+      _error = 'Erreur chargement cartes: ${e.toString()}';
+      debugPrint('Error loading cards for deck: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -92,8 +92,8 @@ class CardViewModel extends ChangeNotifier {
         },
       );
     } catch (e) {
-      _error = "Erreur ajout carte: ${e.toString()}";
-      debugPrint("Error adding card: $e");
+      _error = 'Erreur ajout carte: ${e.toString()}';
+      debugPrint('Error adding card: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -137,7 +137,7 @@ class CardViewModel extends ChangeNotifier {
     } catch (e) {
       _error =
           "Erreur lors de l'ajout de la carte avec média: ${e.toString()}";
-      debugPrint("Error adding card with media: $e");
+      debugPrint('Error adding card with media: $e');
       rethrow;
     }
   }
@@ -180,8 +180,8 @@ class CardViewModel extends ChangeNotifier {
         },
       );
     } catch (e) {
-      _error = "Erreur màj carte: ${e.toString()}";
-      debugPrint("Error updating card: $e");
+      _error = 'Erreur màj carte: ${e.toString()}';
+      debugPrint('Error updating card: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -265,8 +265,8 @@ class CardViewModel extends ChangeNotifier {
         },
       );
     } catch (e) {
-      _error = "Erreur màj carte avec média: ${e.toString()}";
-      debugPrint("Error updating card with media: $e");
+      _error = 'Erreur màj carte avec média: ${e.toString()}';
+      debugPrint('Error updating card with media: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -310,8 +310,8 @@ class CardViewModel extends ChangeNotifier {
         },
       );
     } catch (e) {
-      _error = "Erreur suppression carte: ${e.toString()}";
-      debugPrint("Error deleting card: $e");
+      _error = 'Erreur suppression carte: ${e.toString()}';
+      debugPrint('Error deleting card: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -389,19 +389,19 @@ class CardViewModel extends ChangeNotifier {
         },
       );
     } catch (e) {
-      _error = "Erreur lors de la mise à jour de la carte: ${e.toString()}";
-      debugPrint("Error updating card: $e");
+      _error = 'Erreur lors de la mise à jour de la carte: ${e.toString()}';
+      debugPrint('Error updating card: $e');
     }
   }
 
   String _getFailureMessage(Failure failure) {
     switch (failure) {
       case DatabaseFailure _:
-        return "Erreur de base de données: ${failure.message}";
+        return 'Erreur de base de données: ${failure.message}';
       case ValidationFailure _:
-        return "Erreur de validation: ${failure.message}";
+        return 'Erreur de validation: ${failure.message}';
       default:
-        return "Erreur inconnue: ${failure.message}";
+        return 'Erreur inconnue: ${failure.message}';
     }
   }
 }

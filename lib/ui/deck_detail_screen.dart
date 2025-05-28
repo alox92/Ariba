@@ -309,7 +309,7 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
           children: [
             Icon(Icons.info_outline,
                 size: 48, color: theme.colorScheme.primary),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text('Aucune carte dans ce paquet',
                 style: DesignSystem.bodyLarge
                     .copyWith(color: theme.colorScheme.onSurface)),

@@ -143,7 +143,6 @@ class _AnimatedBackground extends StatelessWidget {
         [Color(0xFF625B71), Color(0xFF4B4453)],
       ],
       duration: 4000.ms,
-      repeat: true,
       curve: Curves.easeInOut,
       child: const SizedBox.expand(),
     );

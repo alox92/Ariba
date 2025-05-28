@@ -106,10 +106,10 @@ class MockDeckRepository extends Mock implements MockDeckRepositoryBase {
   @override
   Stream<Either<Failure, List<Deck>>> watchDecks() => super.noSuchMethod(
         Invocation.method(#watchDecks, []),
-        returnValue: Stream.value(Right<Failure, List<Deck>>([])),
-        returnValueForMissingStub: Stream.value(Right<Failure, List<Deck>>([])),
+        returnValue: Stream.value(const Right<Failure, List<Deck>>([])),
+        returnValueForMissingStub: Stream.value(const Right<Failure, List<Deck>>([])),
       ) ??
-      Stream.value(Right<Failure, List<Deck>>([]));
+      Stream.value(const Right<Failure, List<Deck>>([]));
 }
 
 // Define Mock UseCases
@@ -117,9 +117,9 @@ class MockGetDecksUseCase extends Mock implements MockGetDecksUseCaseBase {
   @override
   Stream<Either<Failure, List<Deck>>> call() => super.noSuchMethod(
         Invocation.method(#call, []),
-        returnValue: Stream.value(Right<Failure, List<Deck>>([])),
-        returnValueForMissingStub: Stream.value(Right<Failure, List<Deck>>([])),
-      ) ?? Stream.value(Right<Failure, List<Deck>>([]));
+        returnValue: Stream.value(const Right<Failure, List<Deck>>([])),
+        returnValueForMissingStub: Stream.value(const Right<Failure, List<Deck>>([])),
+      ) ?? Stream.value(const Right<Failure, List<Deck>>([]));
 }
 class MockGetDeckByIdUseCase extends Mock implements MockGetDeckByIdUseCaseBase {}
 class MockAddDeckUseCase extends Mock implements MockAddDeckUseCaseBase {}
@@ -167,7 +167,7 @@ void main() {
 
     // Stub the watchDecks method for the DeckRepository mock (used by GetDecksUseCase)
     when(deckRepository.watchDecks())
-        .thenAnswer((_) => Stream.value(Right<Failure, List<Deck>>([])));    // Stub the call method for GetDecksUseCase
+        .thenAnswer((_) => Stream.value(const Right<Failure, List<Deck>>([])));    // Stub the call method for GetDecksUseCase
     when(getDecksUseCase.call()) // Stream return expected  
         .thenAnswer((_) => deckRepository.watchDecks());
 

@@ -16,11 +16,7 @@ void main() {
           frontText: 'Test Front',
           backText: 'Test Back',
           tags: 'test,example',
-          frontImage: null,
-          backImage: null,
-          frontAudio: null,
-          backAudio: null,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           lastReviewed: DateTime(2023, 1, 2),
           interval: 7,
           easeFactor: 2.8, // High ease factor should result in easier difficulty
@@ -42,7 +38,7 @@ void main() {
         expect(card.difficulty, lessThanOrEqualTo(2));
         
         // Vérifier le calcul de nextReviewDate
-        final expectedNextReview = DateTime(2023, 1, 2).add(Duration(days: 7));
+        final expectedNextReview = DateTime(2023, 1, 2).add(const Duration(days: 7));
         expect(card.nextReviewDate, equals(expectedNextReview));
       });
 
@@ -54,12 +50,7 @@ void main() {
           frontText: 'Difficult Card',
           backText: 'Hard Answer',
           tags: 'difficult',
-          frontImage: null,
-          backImage: null,
-          frontAudio: null,
-          backAudio: null,
-          createdAt: DateTime(2023, 1, 1),
-          lastReviewed: null, // Jamais révisée
+          createdAt: DateTime(2023),
           interval: 1,
           easeFactor: 1.8, // Très bas = difficile
         );
@@ -84,8 +75,6 @@ void main() {
           frontText: 'Domain Front',
           backText: 'Domain Back',
           frontImagePath: '/path/to/image.jpg',
-          backImagePath: null,
-          frontAudioPath: null,
           backAudioPath: '/path/to/audio.mp3',
           tags: 'domain,test',
           difficulty: 3,
@@ -95,7 +84,7 @@ void main() {
           repetitions: 3,
           intervalDays: 14,
           nextReviewDate: DateTime(2023, 1, 17),
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 3),
         );
 
@@ -123,7 +112,7 @@ void main() {
           name: 'Test Deck',
           description: 'Test Description',
           cardCount: 10,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           lastAccessed: DateTime(2023, 1, 5),
         );
 
@@ -135,7 +124,7 @@ void main() {
         expect(deck.name, equals('Test Deck'));
         expect(deck.description, equals('Test Description'));
         expect(deck.cardCount, equals(10));
-        expect(deck.createdAt, equals(DateTime(2023, 1, 1)));
+        expect(deck.createdAt, equals(DateTime(2023)));
         expect(deck.updatedAt, equals(DateTime(2023, 1, 5))); // lastAccessed mappé vers updatedAt
         
         // Valeurs par défaut pour champs manquants en DB
@@ -148,10 +137,9 @@ void main() {
         final deckData = DeckEntityData(
           id: 2,
           name: 'Deck Sans Description',
-          description: null, // Description nulle
           cardCount: 0,
-          createdAt: DateTime(2023, 1, 1),
-          lastAccessed: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
+          lastAccessed: DateTime(2023),
         );
 
         // Act
@@ -169,8 +157,7 @@ void main() {
           name: 'New Deck',
           description: 'Fresh deck',
           cardCount: 0,
-          createdAt: DateTime(2023, 1, 1),
-          updatedAt: null,
+          createdAt: DateTime(2023),
           color: '#FF5722',
           icon: '🔥',
         );
@@ -182,7 +169,7 @@ void main() {
         expect(companion.name.value, equals('New Deck'));
         expect(companion.description.value, equals('Fresh deck'));
         expect(companion.cardCount.value, equals(0));
-        expect(companion.createdAt.value, equals(DateTime(2023, 1, 1)));
+        expect(companion.createdAt.value, equals(DateTime(2023)));
         // lastAccessed devrait être maintenant puisque updatedAt est null
         expect(companion.lastAccessed.value, isA<DateTime>());
       });
@@ -194,7 +181,7 @@ void main() {
           name: 'Updated Deck',
           description: 'Modified description',
           cardCount: 25,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 10),
           color: '#4CAF50',
           icon: '✅',
@@ -218,8 +205,8 @@ void main() {
         // Test avec easeFactor très bas
         final veryHardCard = CardEntityData(
           id: 1, deckId: 1, frontText: 'Hard', backText: 'Card',
-          tags: '', frontImage: null, backImage: null, frontAudio: null, backAudio: null,
-          createdAt: DateTime.now(), lastReviewed: null, interval: 0, easeFactor: 1.0,
+          tags: '',
+          createdAt: DateTime.now(), interval: 0, easeFactor: 1.0,
         );
         
         final hardCard = veryHardCard.toDomain();
@@ -228,8 +215,8 @@ void main() {
         // Test avec easeFactor très haut
         final veryEasyCard = CardEntityData(
           id: 2, deckId: 1, frontText: 'Easy', backText: 'Card',
-          tags: '', frontImage: null, backImage: null, frontAudio: null, backAudio: null,
-          createdAt: DateTime.now(), lastReviewed: null, interval: 0, easeFactor: 4.0,
+          tags: '',
+          createdAt: DateTime.now(), interval: 0, easeFactor: 4.0,
         );
         
         final easyCard = veryEasyCard.toDomain();
@@ -239,7 +226,7 @@ void main() {
       test('Deck name length affects default icon selection', () {
         // Test deck avec nom court
         final shortNameDeck = DeckEntityData(
-          id: 1, name: 'A', description: null, cardCount: 0,
+          id: 1, name: 'A', cardCount: 0,
           createdAt: DateTime.now(), lastAccessed: DateTime.now(),
         );
         
@@ -249,7 +236,7 @@ void main() {
         
         // Test deck avec nom long
         final longNameDeck = DeckEntityData(
-          id: 2, name: 'Very Long Deck Name For Testing', description: null, cardCount: 0,
+          id: 2, name: 'Very Long Deck Name For Testing', cardCount: 0,
           createdAt: DateTime.now(), lastAccessed: DateTime.now(),
         );
         

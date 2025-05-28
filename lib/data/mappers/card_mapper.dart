@@ -34,8 +34,6 @@ extension CardEntityDataToCardMapper on CardEntityData {
       // MAPPING CHALLENGE: Champs non stockés en DB
       // Ces champs sont importants pour les statistiques mais nécessitent des ajouts en DB
       difficulty: _calculateDifficultyFromEaseFactor(easeFactor), // Basé sur easinessFactor plutôt qu'interval
-      reviewCount: 0, // TODO: Ajouter en DB pour statistiques précises
-      repetitions: 0, // TODO: Ajouter en DB pour l'algorithme SRS SM-2
     );
   }
   

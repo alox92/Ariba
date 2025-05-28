@@ -31,7 +31,7 @@ void main() {
             name: 'Test Deck 1',
             description: 'Description 1',
             cardCount: 5,
-            createdAt: DateTime(2023, 1, 1),
+            createdAt: DateTime(2023),
             updatedAt: DateTime(2023, 1, 3),
           ),
           Deck(
@@ -39,7 +39,7 @@ void main() {
             name: 'Test Deck 2',
             description: 'Description 2',
             cardCount: 3,
-            createdAt: DateTime(2023, 2, 1),
+            createdAt: DateTime(2023, 2),
             updatedAt: DateTime(2023, 2, 3),
           ),
         ];
@@ -91,7 +91,7 @@ void main() {
           name: 'Test Deck',
           description: 'Test Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 2),
         );
 
@@ -169,8 +169,8 @@ void main() {
           name: deckName,
           description: deckDescription,
           cardCount: 0,
-          createdAt: DateTime(2023, 1, 1),
-          updatedAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
+          updatedAt: DateTime(2023),
         );
 
         when(mockRepository.addDeck(any))
@@ -267,7 +267,7 @@ void main() {
           name: 'Updated Deck',
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 2),
         );
 
@@ -296,7 +296,7 @@ void main() {
           name: 'Updated Deck',
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
         );
 
         // Act
@@ -319,7 +319,7 @@ void main() {
           name: '', // Empty name
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
         );
 
         // Act
@@ -342,7 +342,7 @@ void main() {
           name: 'Updated Deck',
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
         );
         const failure = DatabaseFailure('Failed to update deck');
 

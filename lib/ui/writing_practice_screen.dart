@@ -133,7 +133,7 @@ class _WritingPracticeScreenState extends State<WritingPracticeScreen>
     
     _confettiTimer = Timer.periodic(const Duration(milliseconds: 16), (timer) {
       setState(() {
-        for (var particle in _confettiParticles) {
+        for (final particle in _confettiParticles) {
           particle.update();
         }
         _confettiParticles.removeWhere((p) => p.y > MediaQuery.of(context).size.height);
@@ -379,7 +379,7 @@ class _WritingPracticeScreenState extends State<WritingPracticeScreen>
             ),
             Row(
               children: [
-                Icon(Icons.star, color: Colors.amber, size: 20),
+                const Icon(Icons.star, color: Colors.amber, size: 20),
                 const SizedBox(width: 4),
                 AnimatedBuilder(
                   animation: _scoreAnimation,
@@ -713,7 +713,7 @@ class ConfettiPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    for (var particle in particles) {
+    for (final particle in particles) {
       final paint = Paint()
         ..color = particle.color
         ..style = PaintingStyle.fill;

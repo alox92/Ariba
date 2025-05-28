@@ -32,7 +32,7 @@ void main() {
             name: 'Test Deck 1',
             description: 'Description 1',
             cardCount: 5,
-            createdAt: DateTime(2023, 1, 1),
+            createdAt: DateTime(2023),
             updatedAt: DateTime(2023, 1, 2),
           ),
           Deck(
@@ -40,7 +40,7 @@ void main() {
             name: 'Test Deck 2',
             description: 'Description 2',
             cardCount: 3,
-            createdAt: DateTime(2023, 2, 1),
+            createdAt: DateTime(2023, 2),
             updatedAt: DateTime(2023, 2, 2),
           ),
         ];
@@ -59,9 +59,9 @@ void main() {
 
       test('should return failure when repository fails', () async {
         // Arrange
-        final failure = DatabaseFailure('Database error');
+        const failure = DatabaseFailure('Database error');
         when(mockRepository.watchDecks())
-            .thenAnswer((_) => Stream.value(Left(failure)));        // Act
+            .thenAnswer((_) => Stream.value(const Left(failure)));        // Act
         final result = useCase.call();
 
         // Assert
@@ -87,7 +87,7 @@ void main() {
           name: 'Test Deck',
           description: 'Test Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 2),
         );
 
@@ -126,9 +126,9 @@ void main() {
       test('should return failure when repository fails', () async {
         // Arrange
         const deckId = 1;
-        final failure = DatabaseFailure('Deck not found');
+        const failure = DatabaseFailure('Deck not found');
         when(mockRepository.getDeckById(deckId))
-            .thenAnswer((_) async => Left(failure));
+            .thenAnswer((_) async => const Left(failure));
 
         // Act
         final result = await useCase.call(deckId);
@@ -224,9 +224,9 @@ void main() {
           description: 'New Description',
         );
 
-        final failure = DatabaseFailure('Database error');
+        const failure = DatabaseFailure('Database error');
         when(mockRepository.addDeck(any))
-            .thenAnswer((_) async => Left(failure));
+            .thenAnswer((_) async => const Left(failure));
 
         // Act
         final result = await useCase.call(params);
@@ -251,7 +251,7 @@ void main() {
           name: 'Updated Deck',
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 2),
         );
 
@@ -276,7 +276,7 @@ void main() {
           name: 'Updated Deck',
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 2),
         );
 
@@ -298,7 +298,7 @@ void main() {
           name: '', // Empty name
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 2),
         );
 
@@ -320,7 +320,7 @@ void main() {
           name: 'a' * 101, // Too long
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 2),
         );
 
@@ -342,13 +342,13 @@ void main() {
           name: 'Updated Deck',
           description: 'Updated Description',
           cardCount: 5,
-          createdAt: DateTime(2023, 1, 1),
+          createdAt: DateTime(2023),
           updatedAt: DateTime(2023, 1, 2),
         );
 
-        final failure = DatabaseFailure('Update failed');
+        const failure = DatabaseFailure('Update failed');
         when(mockRepository.updateDeck(any))
-            .thenAnswer((_) async => Left(failure));
+            .thenAnswer((_) async => const Left(failure));
 
         // Act
         final result = await useCase.call(deck);
@@ -406,9 +406,9 @@ void main() {
       test('should return failure when repository fails', () async {
         // Arrange
         const deckId = 1;
-        final failure = DatabaseFailure('Delete failed');
+        const failure = DatabaseFailure('Delete failed');
         when(mockRepository.deleteDeck(deckId))
-            .thenAnswer((_) async => Left(failure));
+            .thenAnswer((_) async => const Left(failure));
 
         // Act
         final result = await useCase.call(deckId);
@@ -466,9 +466,9 @@ void main() {
       test('should return failure when repository fails', () async {
         // Arrange
         const deckId = 1;
-        final failure = DatabaseFailure('Update failed');
+        const failure = DatabaseFailure('Update failed');
         when(mockRepository.updateCardCount(deckId))
-            .thenAnswer((_) async => Left(failure));
+            .thenAnswer((_) async => const Left(failure));
 
         // Act
         final result = await useCase.call(deckId);

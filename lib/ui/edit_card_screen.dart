@@ -286,7 +286,7 @@ class _EditCardScreenState extends State<EditCardScreen> {
           editor: editor,
           stylesheet: se.Stylesheet(
             rules: [
-              se.StyleRule(
+              const se.StyleRule(
                 se.BlockSelector('paragraph'),
                 (doc, docNode) => {
                   se.Styles.textStyle: DesignSystem.bodyLarge.copyWith(
@@ -306,7 +306,7 @@ class _EditCardScreenState extends State<EditCardScreen> {
   Future<void> _pickFile(Function(String) onFilePicked,
       {List<String>? allowedExtensions}) async {
     try {
-      FilePickerResult? result = await FilePicker.platform
+      final FilePickerResult? result = await FilePicker.platform
           .pickFiles(allowedExtensions: allowedExtensions);
       if (result != null && result.files.single.path != null) {
         setState(() {
