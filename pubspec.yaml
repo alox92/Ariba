@@ -1,5 +1,5 @@
 name: flashcards_app
-description: Une application de cartes mémoire pour l'apprentissage
+description: Une application de cartes mémoire pour l'apprentissage intelligente
 publish_to: 'none' 
 version: 1.0.0+1
 
@@ -9,47 +9,58 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_animate: ^4.5.0
-  provider: ^6.1.2
-  super_editor: ^0.3.0-dev.23
+  flutter_localizations:
+    sdk: flutter
+
+  # Navigation & State Management
   go_router: ^15.1.2
-  path_provider: ^2.0.11
+  provider: ^6.1.2
+  
+  # Database & Storage
   drift: ^2.20.3
   sqlite3: ^2.7.5
+  path_provider: ^2.0.11
+  shared_preferences: ^2.1.4
+  
+  # File Management
   path: ^1.9.0
   csv: ^6.0.0
   file_picker: ^10.1.9
   share_plus: ^11.0.0
-  permission_handler: ^12.0.0+1
-  flutter_localizations:
-    sdk: flutter
-  intl: ^0.20.1
-  flutter_colorpicker: ^1.0.3
-  image_picker: ^1.1.2
-  just_audio: ^0.9.39
-  audioplayers: ^6.1.0
-  uuid: ^4.5.1
-  animations: ^2.0.6
-  flip_board: ^1.0.0
-  fl_chart: ^1.0.0
   archive: ^3.3.4
-  sqflite: ^2.2.8+1
-  shared_preferences: ^2.1.4
+  
+  # UI & Animations
+  flutter_animate: ^4.5.0
+  animations: ^2.0.6
   flip_card: ^0.6.0
   liquid_swipe: ^3.0.1
+  fl_chart: ^1.0.0
+  flutter_colorpicker: ^1.0.3
+  
+  # Media
+  image_picker: ^1.1.2
+  just_audio: ^0.9.39
+  
+  # Permissions & Utils
+  permission_handler: ^12.0.0+1
+  uuid: ^4.5.1
+  intl: ^0.20.1
+  
+  # Architecture
   dartz: ^0.10.1
   equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^5.0.0
+  
+  # Code Generation
   drift_dev: ^2.20.3
   build_runner: ^2.4.13
-  flutter_lints: ^5.0.0
+  
+  # Testing
   mockito: ^5.4.2
-  matcher: ^0.12.16
-  path_provider_platform_interface: ^2.1.2
-  plugin_platform_interface: ^2.1.8
 
 flutter:
   uses-material-design: true

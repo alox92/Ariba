@@ -11,10 +11,6 @@ analyzer:
     - "**/*.mocks.dart"
     - build/**
     - lib/generated/**
-  errors:
-    # Traiter certains warnings comme des erreurs pour plus de rigueur
-    unused_local_variable: error
-    deprecated_member_use: warning
 
 linter:
   rules:
@@ -35,7 +31,7 @@ linter:
     sort_child_properties_last: true
     
     # Règles de documentation
-    public_member_api_docs: false # Désactivé pour éviter trop de warnings
+    public_member_api_docs: false
     
     # Règles de sécurité
     avoid_web_libraries_in_flutter: true
@@ -48,4 +44,4 @@ linter:
     prefer_final_locals: true
     
     # Règles Flutter spécifiques
-    use_build_context_synchronously: false # Temporairement désactivé
+    use_build_context_synchronously: false

@@ -11,6 +11,10 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+*.tmp
+*.bak
+*.backup
+*~
 
 # IntelliJ related
 *.iml
@@ -18,10 +22,11 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# VS Code
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/tasks.json
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -32,6 +37,15 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+*.lock
+
+# Web related
+/web/build/
+
+# Coverage
+/coverage/
+coverage/
+lcov.info
 
 # Symbolication related
 app.*.symbols
@@ -39,7 +53,57 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
-# Android Studio will place build artifacts here
+# Platform specific builds
 /android/app/debug
 /android/app/profile
 /android/app/release
+/ios/build/
+/macos/build/
+/linux/build/
+/windows/build/
+
+# Generated files
+*.g.dart
+*.freezed.dart
+*.gr.dart
+*.config.dart
+*.pb.dart
+*.pbjson.dart
+*.pbgrpc.dart
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+
+# Logs
+logs/
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/

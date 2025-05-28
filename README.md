@@ -69,7 +69,7 @@ lib/
 ## 🚀 Installation et Configuration
 
 ### Prérequis
-- Flutter SDK (version 3.0 ou supérieure)
+- Flutter SDK (version 3.8 ou supérieure)
 - Dart SDK (version 2.17 ou supérieure)
 - Android Studio / VS Code
 - Git
@@ -78,7 +78,7 @@ lib/
 
 1. **Cloner le repository**
    ```bash
-   git clone https://github.com/yourusername/ariba.git
+   git clone https://github.com/alox92/Ariba.git
    cd ariba
    ```
 
